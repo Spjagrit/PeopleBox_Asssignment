@@ -26,3 +26,22 @@
 ## Output:
 
 * The transformed data is saved to an output CSV file named 'output.csv'.
+
+
+## Code Description
+
+The provided Python script is designed to process input data regarding employee information stored in a CSV file and transform it into a structured output format. Let's break down the code into several paragraphs for clarity.
+
+The first section of the script imports the pandas library and reads the input CSV file named 'input.csv' into a pandas DataFrame called input_df. Additionally, it initializes an empty list named output_data to store the transformed data.
+
+The script then iterates through each row of the input DataFrame (input_df) using a for loop. For each row, it extracts relevant information such as employee code, manager employee code, compensation, dates of joining, compensation adjustments, reviews, and engagements. These extracted details are then appended to the output_data list in a structured format.
+
+After processing all rows in the input DataFrame, the script constructs a new DataFrame named output_df from the collected output_data. This DataFrame contains columns such as 'Employee Code', 'Manager Employee Code', 'Last Compensation', 'Compensation', 'Last Pay Raise Date', 'Variable Pay', 'Tenure in Org', 'Performance Rating', 'Engagement Score', 'Effective Date', and 'End Date'.
+
+Subsequently, the script performs additional data manipulation tasks on the output_df DataFrame. It sorts the DataFrame based on 'Employee Code' and 'Effective Date' to ensure the records are ordered correctly. Missing values in specific columns (e.g., 'Last Pay Raise Date', 'Performance Rating', 'Engagement Score', 'Compensation') are filled forward within each employee group using the ffill() and bfill() functions.
+
+The script then calculates the 'End Date' for each historical record by subtracting one day from the effective date of the next record. If a 'Date of Exit' is provided for an employee, the 'End Date' is updated accordingly.
+
+Finally, the script sets certain fields to None based on specific conditions. For example, it sets 'Last Pay Raise Date', 'Performance Rating', and 'Engagement Score' to None under certain date conditions.
+
+In conclusion, this script provides a systematic approach to process and transform employee-related data from an input CSV file to a structured output format, while adhering to certain conditions and assumptions outlined within the script.
